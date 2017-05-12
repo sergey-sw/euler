@@ -20,6 +20,7 @@ public class P001 {
         System.out.println(calc2(3, 5, 1000));
     }
 
+    // O(n)
     private static int calc(int[] base, int max) {
         return IntStream.range(0, max).filter(value -> {
             for (int divisor : base) {
@@ -29,6 +30,7 @@ public class P001 {
         }).sum();
     }
 
+    // O(1)
     private static int calc2(int d1, int d2, int max) {
         return sumBy(d1, max) + sumBy(d2, max) - sumBy(d1 * d2, max);
     }
