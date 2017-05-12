@@ -15,6 +15,9 @@ public class P001 {
     public static void main(String[] args) {
         System.out.println(calc(new int[] {3, 5}, 10));
         System.out.println(calc(new int[] {3, 5}, 1000));
+
+        System.out.println(calc2(3, 5, 100));
+        System.out.println(calc2(3, 5, 1000));
     }
 
     private static int calc(int[] base, int max) {
@@ -24,5 +27,14 @@ public class P001 {
             }
             return false;
         }).sum();
+    }
+
+    private static int calc2(int d1, int d2, int max) {
+        return sumBy(d1, max) + sumBy(d2, max) - sumBy(d1 * d2, max);
+    }
+
+    private static int sumBy(int d, int max) {
+        int p = max / d;
+        return d * p * (p + 1) / 2;
     }
 }
