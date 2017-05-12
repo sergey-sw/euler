@@ -15,13 +15,14 @@ public class Primes {
     private final BitSet bitSet;
     private final int n;
 
-    public Primes(int bits) {
-        bitSet = new BitSet(bits);
-        n = bits;
+    public Primes(int n) {
+        n = Math.max(n, 1_000_000);
+        bitSet = new BitSet(n);
+        this.n = n;
 
-        for (int i = 2; i < bits; i++) {
+        for (int i = 2; i < n; i++) {
             if (!bitSet.get(i)) {
-                for (int j = 2 * i; j < bits; j+= i) {
+                for (int j = 2 * i; j < n; j+= i) {
                     bitSet.set(j);
                 }
             }
