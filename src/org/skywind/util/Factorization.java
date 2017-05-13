@@ -1,6 +1,7 @@
 package org.skywind.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -13,6 +14,8 @@ public class Factorization {
     private static Primes primes = new Primes(1_000_000);
 
     public static List<Integer> getFactors(long n) {
+        if (n == 1) return Collections.singletonList(1);
+
         List<Integer> factors = new ArrayList<>();
         OptionalInt factor;
         do {
