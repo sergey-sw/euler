@@ -1,9 +1,6 @@
 package org.skywind.util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 
 /**
  * Author: Sergey Saiyan sergey.sova42@gmail.com
