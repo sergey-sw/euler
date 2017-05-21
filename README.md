@@ -3,4 +3,4 @@ Project euler solutions
 
 ![progress]
 
-[progress]: https://projecteuler.net/profile/adam.skywalker.png?
+[progress]: https://projecteuler.net/profile/adam.skywalker.png?q=1
