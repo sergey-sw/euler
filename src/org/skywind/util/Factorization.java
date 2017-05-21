@@ -10,6 +10,10 @@ public class Factorization {
 
     private static Primes primes = new Primes(1_000_000);
 
+    public static List<Integer> getFactors(int n) {
+        return getFactors((long) n);
+    }
+
     public static List<Integer> getFactors(long n) {
         if (n == 1) return Collections.singletonList(1);
 
