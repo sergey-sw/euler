@@ -17,4 +17,9 @@ public class ExtMath {
         }
         return result;
     }
+
+    public static int sqr(int n) {
+        if (n > 40_000) throw new IllegalArgumentException("N is too big for integer square");
+        return n * n;
+    }
 }
