@@ -15,6 +15,10 @@ public class Primes {
     private final BitSet bitSet;
     private final int n;
 
+    public Primes() {
+        this(1_000_000);
+    }
+
     public Primes(int n) {
         n = Math.max(n, 1_000_000);
         bitSet = new BitSet(n);
@@ -30,7 +34,7 @@ public class Primes {
     }
 
     public boolean isPrime(int n) {
-        return !bitSet.get(n);
+        return n > 0 && !bitSet.get(n);
     }
 
     public IntStream toStream() {
