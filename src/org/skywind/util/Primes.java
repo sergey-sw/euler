@@ -34,7 +34,7 @@ public class Primes {
     }
 
     public boolean isPrime(int n) {
-        return n > 0 && !bitSet.get(n);
+        return n > 1 && !bitSet.get(n);
     }
 
     public IntStream toStream() {

@@ -27,6 +27,10 @@ public class Tests {
         assertTrue(Palindrome.check(1221));
         assertTrue(Palindrome.check(121));
         assertFalse(Palindrome.check(123));
+
+        Primes primes = new Primes();
+        assertFalse(primes.isPrime(0));
+        assertFalse(primes.isPrime(1));
     }
 
     private static void assertEquals(int expected, int actual) {
