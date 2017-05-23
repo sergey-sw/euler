@@ -26,6 +26,7 @@ public class Digits {
             digits.add((int) (n % 10));
             n = n / 10;
         }
+        Collections.reverse(digits);
         return digits;
     }
 
