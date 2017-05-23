@@ -1,5 +1,7 @@
 package org.skywind.util;
 
+import java.util.Arrays;
+
 /**
  * Author: Sergey Saiyan sergey.sova42@gmail.com
  * Created at: 5/13/17.
@@ -21,5 +23,29 @@ public class ExtMath {
     public static int sqr(int n) {
         if (n > 40_000) throw new IllegalArgumentException("N is too big for integer square");
         return n * n;
+    }
+
+    public static int lcm(int... values) {
+        return Arrays.stream(values).reduce(1, (a, b) -> Math.abs(a * b) / gcd(a, b));
+    }
+
+    public static int lcm(int a, int b) {
+        return Math.abs(a * b) / gcd(a, b);
+    }
+
+    public static int gcd(int a, int b) {
+        if (a < b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+
+        int r;
+        while (b != 0) {
+            r = a % b;
+            a = b;
+            b = r;
+        }
+        return a;
     }
 }
