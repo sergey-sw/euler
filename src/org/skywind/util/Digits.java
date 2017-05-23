@@ -1,6 +1,7 @@
 package org.skywind.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ public class Digits {
             digits.add(n % 10);
             n = n / 10;
         }
+        Collections.reverse(digits);
         return digits;
     }
 
@@ -25,5 +27,29 @@ public class Digits {
             n = n / 10;
         }
         return digits;
+    }
+
+    public static List<Integer> getRotations(int n) {
+        List<Integer> digits = getDigits(n);
+        List<Integer> rotations = new ArrayList<>();
+
+        for (int i = 1; i < digits.size(); i++) {
+            rotations.add(rotationFrom(digits, i));
+        }
+
+        return rotations;
+    }
+
+    public static int rotationFrom(List<Integer> digits, int start) {
+        int rotation = digits.get(start);
+
+        for (int i = start + 1; i < digits.size(); i++) {
+            rotation = rotation * 10 + digits.get(i);
+        }
+        for (int i = 0; i < start; i++) {
+            rotation = rotation * 10 + digits.get(i);
+        }
+
+        return rotation;
     }
 }
