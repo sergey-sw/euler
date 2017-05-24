@@ -19,10 +19,9 @@ public class Primes {
         this(1_000_000);
     }
 
-    public Primes(int n) {
-        n = Math.max(n, 1_000_000);
-        bitSet = new BitSet(n);
-        this.n = n;
+    public Primes(int size) {
+        n = Math.max(size, 1_000_000);
+        bitSet = new BitSet(size);
 
         for (int i = 2; i < n; i++) {
             if (!bitSet.get(i)) {
@@ -39,9 +38,5 @@ public class Primes {
 
     public IntStream toStream() {
         return IntStream.range(2, n).filter(this::isPrime);
-    }
-
-    public int[] toArray() {
-        return toStream().toArray();
     }
 }

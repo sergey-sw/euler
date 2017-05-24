@@ -1,10 +1,9 @@
 package org.skywind.one;
 
+import org.skywind.util.Factorization;
 import org.skywind.util.Primes;
 
 import java.util.OptionalInt;
-
-import static org.skywind.util.Factorization.findFactor;
 
 /**
  * The prime factors of 13195 are 5, 7, 13 and 29.
@@ -21,7 +20,7 @@ public class P003 {
         int maxFactor = 0;
 
         do {
-            OptionalInt factor = findFactor(n, primes);
+            OptionalInt factor = Factorization.findFactor(n, primes);
             if (factor.isPresent()) {
                 System.out.println("Found factor: " + factor.getAsInt());
                 n /= factor.getAsInt();
