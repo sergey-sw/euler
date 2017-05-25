@@ -1,5 +1,7 @@
 package org.skywind.one;
 
+import org.skywind.util.Digits;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,13 +21,11 @@ import java.util.Set;
  */
 public class P032 {
 
-    private static int[] digits = new int[10];
-
     public static void main(String[] args) {
         Set<Integer> products = new HashSet<>();
         for (int a = 1; a < 5000; a++) {
             for (int b = a; b < 5000; b++) {
-                if (isPandigital(a, b, a * b)) {
+                if (Digits.isPandigital(a, b, a * b)) {
                     products.add(a * b);
                     System.out.println(a + " " + b + " " + a * b);
                 }
@@ -33,32 +33,5 @@ public class P032 {
         }
 
         System.out.println(products.stream().mapToLong(Long::valueOf).sum());
-    }
-
-    private static boolean isPandigital(int a, int b, int c) {
-        for (int i = 1; i < 10; i++) {
-            digits[i] = 0;
-        }
-        if (notPandigital(a)) return false;
-        if (notPandigital(b)) return false;
-        if (notPandigital(c)) return false;
-
-        for (int i = 1; i < 10; i++) {
-            if (digits[i] == 0) return false;
-        }
-        return true;
-    }
-
-    private static boolean notPandigital(int n) {
-        while (n > 0) {
-            int digit = n % 10;
-            if (digits[digit] == 0) {
-                digits[digit] = 1;
-                n = n / 10;
-            } else {
-                return true;
-            }
-        }
-        return false;
     }
 }

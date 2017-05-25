@@ -53,4 +53,34 @@ public class Digits {
 
         return rotation;
     }
+
+    private static int[] digits = new int[10];
+
+    public static boolean isPandigital(int... parts) {
+        for (int i = 1; i < 10; i++) {
+            digits[i] = 0;
+        }
+
+        for (int part : parts) {
+            if (notPandigital(part)) return false;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            if (digits[i] == 0) return false;
+        }
+        return true;
+    }
+
+    private static boolean notPandigital(int n) {
+        while (n > 0) {
+            int digit = n % 10;
+            if (digits[digit] == 0) {
+                digits[digit] = 1;
+                n = n / 10;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
