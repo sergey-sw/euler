@@ -21,15 +21,16 @@ import java.util.stream.IntStream;
  */
 public class P040 {
 
-    private static int[] spaces = new int[14];
+    private static final int MAX_POW = 7;
+    private static int[] spaces = new int[MAX_POW + 1];
 
     public static void main(String[] args) {
         int pow = 1;
         do {
             spaces[pow] = lengthOf(pow) + spaces[pow - 1];
-        } while (spaces[++pow - 1] < ExtMath.pow(10, 7));
+        } while (spaces[++pow - 1] < ExtMath.pow(10, MAX_POW));
 
-        IntStream posStream = IntStream.iterate(1, x -> x * 10).limit(7);
+        IntStream posStream = IntStream.iterate(1, x -> x * 10).limit(MAX_POW);
         System.out.println(posStream.map(P040::getNumberAtPos).reduce(1, (x, y) -> x * y));
     }
 
