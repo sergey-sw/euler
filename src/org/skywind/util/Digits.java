@@ -57,42 +57,71 @@ public class Digits {
     private static int[] digits = new int[10];
     private static int digitCounter = 0;
 
-
     // has digits 1-9
+    public static boolean isPandigital9(int... parts) {
+        return __isPandigital(1, parts);
+    }
+
+    // has digits 0-9
     public static boolean isPandigital10(int... parts) {
-        for (int i = 1; i < 10; i++) {
-            digits[i] = 0;
+        return __isPandigital(0, parts);
+    }
+
+    private static boolean __isPandigital(int start, int... parts) {
+        for (int i = start; i < 10; i++) {
+            digits[i] = -1;
         }
 
         for (int part : parts) {
             if (notPandigital(part)) return false;
         }
 
-        for (int i = 1; i < 10; i++) {
-            if (digits[i] == 0) return false;
+        for (int i = start; i < 10; i++) {
+            if (digits[i] == -1) return false;
         }
         return true;
     }
 
-    public static boolean isPandigital(int number) {
+    public static boolean isPandigital(long number) {
         digitCounter = 0;
         for (int i = 1; i < 10; i++) {
-            digits[i] = 0;
+            digits[i] = -1;
         }
 
         if (notPandigital(number)) return false;
 
         for (int i = 1; i < 10; i++) {
-            if (digits[i] == 0 && i < digitCounter) return false;
+            if (digits[i] == -1 && i < digitCounter) return false;
             if (digits[i] == 1 && i > digitCounter) return false;
         }
         return true;
     }
 
-    private static boolean notPandigital(int n) {
+    public static boolean isPandigital10(long number) {
+        digitCounter = 0;
+        for (int i = 0; i < 10; i++) {
+            digits[i] = -1;
+        }
+
+        if (notPandigital(number)) return false;
+
+        for (int i = 0; i < 10; i++) {
+            if (digits[i] == -1 && i < digitCounter) return false;
+            if (digits[i] == 1 && i > digitCounter) return false;
+        }
+        return true;
+    }
+
+    private static boolean notPandigital(long n) {
+        if (n == 0) {
+            digits[0] = 1;
+            digitCounter++;
+            return false;
+        }
+
         while (n > 0) {
-            int digit = n % 10;
-            if (digits[digit] == 0) {
+            int digit = (int) (n % 10);
+            if (digits[digit] == -1) {
                 digits[digit] = 1;
                 n = n / 10;
                 digitCounter++;

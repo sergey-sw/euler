@@ -42,7 +42,7 @@ public class P038 {
             for (int j = 0; j < n; j++) {
                 parts[j] = (j + 1) * number;
             }
-            if (Digits.isPandigital10(parts)) {
+            if (Digits.isPandigital9(parts)) {
                 int pangital = Integer.valueOf(Arrays.stream(parts).boxed().map(String::valueOf)
                         .collect(Collectors.joining("")));
                 max = Math.max(max, pangital);

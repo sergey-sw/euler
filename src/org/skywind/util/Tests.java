@@ -39,6 +39,25 @@ public class Tests {
         assertFalse(Digits.isPandigital(103));
         assertFalse(Digits.isPandigital(126));
         assertFalse(Digits.isPandigital(33));
+
+        assertTrue(Digits.isPandigital9(123, 456, 789));
+        assertTrue(Digits.isPandigital9(123, 456789));
+        assertTrue(Digits.isPandigital9(123456789));
+        assertTrue(Digits.isPandigital9(987, 456, 321));
+
+        assertFalse(Digits.isPandigital9(12, 34, 5));
+        assertFalse(Digits.isPandigital9(12345));
+
+        assertTrue(Digits.isPandigital10(0, 123, 456, 789));
+        assertTrue(Digits.isPandigital10(0, 123, 456789));
+        assertTrue(Digits.isPandigital10(0, 123456789));
+        assertTrue(Digits.isPandigital10(0, 987, 456, 321));
+        assertTrue(Digits.isPandigital10(1_023_456_789));
+        assertTrue(Digits.isPandigital10(1234567890L));
+
+        assertFalse(Digits.isPandigital10(0, 12, 34, 5));
+        assertFalse(Digits.isPandigital10(12345));
+
     }
 
     private static void assertEquals(int expected, int actual) {
