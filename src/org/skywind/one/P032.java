@@ -25,7 +25,7 @@ public class P032 {
         Set<Integer> products = new HashSet<>();
         for (int a = 1; a < 5000; a++) {
             for (int b = a; b < 5000; b++) {
-                if (Digits.isPandigital(a, b, a * b)) {
+                if (Digits.isPandigital10(a, b, a * b)) {
                     products.add(a * b);
                     System.out.println(a + " " + b + " " + a * b);
                 }

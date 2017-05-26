@@ -31,6 +31,14 @@ public class Tests {
         Primes primes = new Primes();
         assertFalse(primes.isPrime(0));
         assertFalse(primes.isPrime(1));
+
+        assertTrue(Digits.isPandigital(12345));
+        assertTrue(Digits.isPandigital(12));
+        assertTrue(Digits.isPandigital(123456987));
+
+        assertFalse(Digits.isPandigital(103));
+        assertFalse(Digits.isPandigital(126));
+        assertFalse(Digits.isPandigital(33));
     }
 
     private static void assertEquals(int expected, int actual) {

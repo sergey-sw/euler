@@ -23,9 +23,9 @@ public class Primes {
         n = Math.max(size, 1_000_000);
         bitSet = new BitSet(size);
 
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i <= n / 2; i++) {
             if (!bitSet.get(i)) {
-                for (int j = 2 * i; j < n; j+= i) {
+                for (int j = 2 * i; j <= n; j += i) {
                     bitSet.set(j);
                 }
             }
@@ -38,5 +38,9 @@ public class Primes {
 
     public IntStream toStream() {
         return IntStream.range(2, n).filter(this::isPrime);
+    }
+
+    public IntStream reverseStream() {
+        return IntStream.iterate(n, x -> x - 1).limit(n - 1).filter(this::isPrime);
     }
 }
