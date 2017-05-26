@@ -1,15 +1,8 @@
 package org.skywind.one;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
+import org.skywind.util.ResourceTools;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Using names.txt, a 46K text file containing over five-thousand first names,
@@ -28,13 +21,8 @@ import java.util.stream.Collectors;
  */
 public class P022 {
 
-    public static void main(String[] args) throws URISyntaxException, IOException {
-        Path path = Paths.get(P022.class.getResource("/p022-names.txt").toURI());
-        String str = new String(Files.readAllBytes(path));
-        List<String> names = Arrays.stream(str.split(","))
-                .map(n -> n.substring(1, n.length() - 1))
-                .sorted()
-                .collect(Collectors.toList());
+    public static void main(String[] args) throws Exception {
+        List<String> names = ResourceTools.wordsFromFile("/p022-names.txt");
 
         int sum = 0;
         for (int i = 0; i < names.size(); i++) {
