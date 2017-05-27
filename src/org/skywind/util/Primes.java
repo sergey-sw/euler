@@ -36,11 +36,19 @@ public class Primes {
         return n > 1 && !bitSet.get(n);
     }
 
+    public boolean isComposite(int n) {
+        return n > 1 && bitSet.get(n);
+    }
+
     public IntStream toStream() {
         return IntStream.range(2, n).filter(this::isPrime);
     }
 
     public IntStream reverseStream() {
         return IntStream.iterate(n, x -> x - 1).limit(n - 1).filter(this::isPrime);
+    }
+
+    public IntStream toCompositeStream() {
+        return IntStream.range(2, n).filter(this::isComposite);
     }
 }

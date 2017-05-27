@@ -31,6 +31,9 @@ public class Tests {
         Primes primes = new Primes();
         assertFalse(primes.isPrime(0));
         assertFalse(primes.isPrime(1));
+        assertTrue(primes.isComposite(48));
+        assertFalse(primes.isComposite(1));
+        assertFalse(primes.isComposite(2));
 
         assertTrue(Digits.isPandigital(12345));
         assertTrue(Digits.isPandigital(12));
