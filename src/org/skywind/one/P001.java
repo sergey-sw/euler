@@ -1,7 +1,5 @@
 package org.skywind.one;
 
-import java.util.stream.IntStream;
-
 /**
  * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
  * The sum of these multiples is 23.
@@ -13,21 +11,8 @@ import java.util.stream.IntStream;
 public class P001 {
 
     public static void main(String[] args) {
-        System.out.println(calc(new int[] {3, 5}, 10));
-        System.out.println(calc(new int[] {3, 5}, 1000));
-
         System.out.println(calc2(3, 5, 100));
         System.out.println(calc2(3, 5, 1000));
-    }
-
-    // O(n)
-    private static int calc(int[] base, int max) {
-        return IntStream.range(0, max).filter(value -> {
-            for (int divisor : base) {
-                if (value % divisor == 0) return true;
-            }
-            return false;
-        }).sum();
     }
 
     // O(1)
