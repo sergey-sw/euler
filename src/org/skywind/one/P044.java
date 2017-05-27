@@ -1,5 +1,7 @@
 package org.skywind.one;
 
+import org.skywind.util.Numbers;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,7 +24,7 @@ import java.util.stream.LongStream;
 public class P044 {
 
     public static void main(String[] args) {
-        long[] numbers = IntStream.range(0, 1_000_000).mapToLong(P044::getPentagonal).toArray();
+        long[] numbers = IntStream.range(0, 1_000_000).mapToLong(Numbers::getPentagonal).toArray();
         Set<Long> set = LongStream.of(numbers).boxed().collect(Collectors.toSet());
 
         long min = Integer.MAX_VALUE;
@@ -48,9 +50,5 @@ public class P044 {
         System.out.println("min: " + min);
         System.out.println("i: " + numbers[minI]);
         System.out.println("j: " + numbers[minJ]);
-    }
-
-    private static long getPentagonal(long n) {
-        return n * (3 * n - 1) / 2;
     }
 }

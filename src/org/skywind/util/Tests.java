@@ -58,6 +58,8 @@ public class Tests {
         assertFalse(Digits.isPandigital10(0, 12, 34, 5));
         assertFalse(Digits.isPandigital10(12345));
 
+        assertEquals(0, Search.binary(new int[]{1, 2, 3, 4}, 1));
+        assertEquals(2, Search.binary(new int[]{1, 2, 4, 5}, 3));
     }
 
     private static void assertEquals(int expected, int actual) {

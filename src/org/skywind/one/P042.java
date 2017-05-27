@@ -1,5 +1,6 @@
 package org.skywind.one;
 
+import org.skywind.util.Numbers;
 import org.skywind.util.ResourceTools;
 
 import java.io.IOException;
@@ -28,20 +29,16 @@ import static java.util.stream.Collectors.toSet;
  */
 public class P042 {
 
-    private static Set<Integer> triangles = IntStream.range(1, 100).mapToObj(P042::getT).collect(toSet());
+    private static Set<Long> triangles = IntStream.range(1, 100).mapToLong(Numbers::getTriangle).boxed().collect(toSet());
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         List<String> words = ResourceTools.wordsFromFile("/p042-words.txt");
 
         long count = words.stream()
                 .map(w -> w.chars().map(c -> c - 'A' + 1).sum())
-                .filter(sum -> triangles.contains(sum))
+                .filter(sum -> triangles.contains((long) sum))
                 .count();
 
         System.out.println(count);
-    }
-
-    private static Integer getT(int n) {
-        return n * (n + 1) / 2;
     }
 }
