@@ -57,6 +57,13 @@ public class Digits {
     private static int[] digits = new int[10];
     private static int digitCounter = 0;
 
+    public static boolean hasSameDigits(long n) {
+        for (int i = 0; i < 10; i++) {
+            digits[i] = -1;
+        }
+        return __hasSameDigits(n);
+    }
+
     // has digits 1-9
     public static boolean isPandigital9(int... parts) {
         return __isPandigital(1, parts);
@@ -73,7 +80,7 @@ public class Digits {
         }
 
         for (int part : parts) {
-            if (notPandigital(part)) return false;
+            if (__hasSameDigits(part)) return false;
         }
 
         for (int i = start; i < 10; i++) {
@@ -88,7 +95,7 @@ public class Digits {
             digits[i] = -1;
         }
 
-        if (notPandigital(number)) return false;
+        if (__hasSameDigits(number)) return false;
 
         for (int i = 1; i < 10; i++) {
             if (digits[i] == -1 && i < digitCounter) return false;
@@ -103,7 +110,7 @@ public class Digits {
             digits[i] = -1;
         }
 
-        if (notPandigital(number)) return false;
+        if (__hasSameDigits(number)) return false;
 
         for (int i = 0; i < 10; i++) {
             if (digits[i] == -1 && i < digitCounter) return false;
@@ -112,7 +119,7 @@ public class Digits {
         return true;
     }
 
-    private static boolean notPandigital(long n) {
+    private static boolean __hasSameDigits(long n) {
         if (n == 0) {
             digits[0] = 1;
             digitCounter++;
