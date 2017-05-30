@@ -25,4 +25,9 @@ public class ResourceTools {
                 .sorted()
                 .collect(Collectors.toList());
     }
+
+    public static List<String> lines(String name) throws URISyntaxException, IOException {
+        Path path = Paths.get(P022.class.getResource(name).toURI());
+        return Files.readAllLines(path);
+    }
 }
