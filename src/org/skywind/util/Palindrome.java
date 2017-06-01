@@ -1,5 +1,7 @@
 package org.skywind.util;
 
+import java.math.BigInteger;
+
 /**
  * Author: Sergey Saiyan sergey.sova42@gmail.com
  * Created at 24/05/2017.
@@ -22,5 +24,20 @@ public class Palindrome {
             k = k / 10;
         }
         return n == reversed;
+    }
+
+    public static boolean check(BigInteger n) {
+        return n.equals(reverse(n));
+    }
+
+    public static BigInteger reverse(BigInteger n) {
+        BigInteger r = BigInteger.ZERO;
+        BigInteger ten = new BigInteger("10");
+        while (n.compareTo(BigInteger.ZERO) > 0) {
+            BigInteger[] divideAndRemainder = n.divideAndRemainder(ten);
+            r = r.multiply(ten).add(divideAndRemainder[1]);
+            n = divideAndRemainder[0];
+        }
+        return r;
     }
 }

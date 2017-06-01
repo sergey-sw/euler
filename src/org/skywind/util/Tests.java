@@ -1,5 +1,6 @@
 package org.skywind.util;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -63,6 +64,9 @@ public class Tests {
 
         assertEquals(0, Search.binary(new int[]{1, 2, 3, 4}, 1));
         assertEquals(2, Search.binary(new int[]{1, 2, 4, 5}, 3));
+
+        assertEquals("1234", Palindrome.reverse(new BigInteger("4321")).toString());
+        assertEquals("1", Palindrome.reverse(new BigInteger("10")).toString());
     }
 
     private static void assertEquals(int expected, int actual) {
