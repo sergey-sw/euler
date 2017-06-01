@@ -32,7 +32,7 @@ public class P058 {
 
             primeCount += IntStream.of(diagonal).filter(primes::isPrime).count();
 
-            if (1.0 * primeCount / (4 * distance + 1) < 0.1) {
+            if (primeCount / (4.0 * distance + 1) < 0.1) {
                 System.out.println(2 * distance + 1);
                 return;
             }
