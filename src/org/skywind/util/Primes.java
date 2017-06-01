@@ -1,5 +1,8 @@
 package org.skywind.util;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.BitSet;
 import java.util.stream.IntStream;
 
@@ -32,7 +35,13 @@ public class Primes {
         }
     }
 
+    private Primes(BitSet bs, int size) {
+        bitSet = bs;
+        n = size;
+    }
+
     public boolean isPrime(int n) {
+        if (this.n <= n) throw new IllegalArgumentException("n is too big: " + n);
         return n > 1 && !bitSet.get(n);
     }
 
@@ -50,5 +59,10 @@ public class Primes {
 
     public IntStream toCompositeStream() {
         return IntStream.range(2, n).filter(this::isComposite);
+    }
+
+    public static Primes getBillionPrimes() throws IOException {
+        byte[] bytes = Files.readAllBytes(Paths.get("/Users/sergey/primes"));
+        return new Primes(BitSet.valueOf(bytes), 1_000_000_000);
     }
 }

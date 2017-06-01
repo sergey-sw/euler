@@ -1,7 +1,6 @@
 package org.skywind.one;
 
-import org.skywind.util.Direction;
-import org.skywind.util.ExtMath;
+import org.skywind.util.Spiral;
 
 /**
  * Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:
@@ -22,40 +21,14 @@ import org.skywind.util.ExtMath;
 public class P028 {
 
     public static void main(String[] args) {
-        int[][] spiral5 = getSpiral(5);
+        int[][] spiral5 = Spiral.getSpiral(5);
         System.out.println(diagonalSum(spiral5));
 
-        int[][] spiral1001 = getSpiral(1001);
+        int[][] spiral1001 = Spiral.getSpiral(1001);
         System.out.println(diagonalSum(spiral1001));
     }
 
-    private static int[][] getSpiral(int n) {
-        if (n % 2 == 0) throw new IllegalArgumentException("N should be odd");
 
-        int[][] arr = new int[n][n];
-        Direction d = Direction.RIGHT;
-
-        int start = n / 2;
-        int x = start, y = start;
-
-        int epoch = 0; // number of cells between border and center minus 1
-
-        for (int i = 1; i <= n * n; i++) {
-            arr[y][x] = i;
-
-            if (i == ExtMath.sqr(2 * epoch + 1)) { // epoch is increased at 1, 9, 25, 49 and so on
-                epoch++;
-            } else if (Math.abs(x - start) == epoch && d.isHorizontal()
-                    || Math.abs(y - start) == epoch && d.isVertical()) {
-                d = Direction.clockWise(d); // rotate direction when met the border
-            }
-
-            y += d.dy;
-            x += d.dx;
-        }
-
-        return arr;
-    }
 
     private static long diagonalSum(int[][] spiral) {
         int n = spiral.length;
