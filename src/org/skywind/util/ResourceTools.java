@@ -30,4 +30,9 @@ public class ResourceTools {
         Path path = Paths.get(P022.class.getResource(name).toURI());
         return Files.readAllLines(path);
     }
+
+    public static String toString(String name) throws IOException, URISyntaxException {
+        Path path = Paths.get(P022.class.getResource(name).toURI());
+        return new String(Files.readAllBytes(path));
+    }
 }
