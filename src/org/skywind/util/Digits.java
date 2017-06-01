@@ -1,14 +1,20 @@
 package org.skywind.util;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * Author: Sergey Saiyan sergey.sova42@gmail.com
  * Created at: 23.05.17.
  */
 public class Digits {
+
+    public static IntStream getDigits(BigInteger n) {
+        return n.toString().chars().map(x -> x - '0');
+    }
 
     public static List<Integer> getDigits(int n) {
         List<Integer> digits = new ArrayList<>();
