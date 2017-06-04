@@ -1,5 +1,6 @@
 package org.skywind.util;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 /**
@@ -18,6 +19,11 @@ public class ExtMath {
             result *= number;
         }
         return result;
+    }
+
+    public static BigInteger powToBigInt(Integer number, int power) {
+        BigInteger bi = new BigInteger(Integer.toString(number));
+        return bi.pow(power);
     }
 
     public static int sqr(int n) {

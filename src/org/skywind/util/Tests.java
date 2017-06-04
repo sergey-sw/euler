@@ -67,6 +67,12 @@ public class Tests {
 
         assertEquals("1234", Palindrome.reverse(new BigInteger("4321")).toString());
         assertEquals("1", Palindrome.reverse(new BigInteger("10")).toString());
+
+        assertEquals(2, Permutations.allPermutations("ab".toCharArray()).size());
+        assertEquals(6, Permutations.allPermutations("abc".toCharArray()).size());
+        assertEquals(24, Permutations.allPermutations("abcd".toCharArray()).size());
+        assertEquals(120, Permutations.allPermutations("abcde".toCharArray()).size());
+        assertEquals(720, Permutations.allPermutations("abcdef".toCharArray()).size());
     }
 
     private static void assertEquals(int expected, int actual) {
