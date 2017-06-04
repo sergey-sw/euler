@@ -14,6 +14,8 @@ import java.util.stream.IntStream;
  */
 public class Primes {
 
+    private static final Primes _instance = new Primes();
+
     // unset bits are prime numbers
     private final BitSet bitSet;
     private final int n;
@@ -46,6 +48,7 @@ public class Primes {
     }
 
     public boolean isComposite(int n) {
+        if (this.n <= n) throw new IllegalArgumentException("n is too big: " + n);
         return n > 1 && bitSet.get(n);
     }
 
@@ -61,8 +64,29 @@ public class Primes {
         return IntStream.range(2, n).filter(this::isComposite);
     }
 
-    public static Primes getBillionPrimes() throws IOException {
-        byte[] bytes = Files.readAllBytes(Paths.get("/Users/sergey/primes"));
-        return new Primes(BitSet.valueOf(bytes), 1_000_000_000);
+    public static Primes getBillionPrimes() {
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get("/Users/sergey/primes"));
+            return new Primes(BitSet.valueOf(bytes), 1_000_000_000);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean isLongPrime(long n) {
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static boolean isLongComposite(long n) {
+        if (n < 1_000_000) {
+            return _instance.isComposite((int) n);
+        }
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) return true;
+        }
+        return false;
     }
 }

@@ -42,4 +42,18 @@ public class Numbers {
         }
         return arr;
     }
+
+    public static int getOrder(int number) {
+        if (number < 10) {
+            return 10;
+        } else if (number < 100) {
+            return 100;
+        } else if (number < 1000) {
+            return 1000;
+        } else if (number < 10_000) {
+            return 10_000;
+        } else {
+            throw new IllegalArgumentException("number too big: " + number);
+        }
+    }
 }
