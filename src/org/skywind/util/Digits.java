@@ -36,6 +36,19 @@ public class Digits {
         return digits;
     }
 
+    public static int getNumberOfDigits(long n) {
+        int cnt = 0;
+        while (n > 0) {
+            cnt++;
+            n /= 10;
+        }
+        return cnt;
+    }
+
+    public static int getNumberOfDigits(BigInteger n) {
+        return n.toString().length();
+    }
+
     public static List<Integer> getRotations(int n) {
         List<Integer> digits = getDigits(n);
         List<Integer> rotations = new ArrayList<>();

@@ -14,7 +14,7 @@ public class ExtMath {
     }
 
     public static long pow(int number, int power) {
-        int result = 1;
+        long result = 1L;
         for (int i = 1; i <= power; i++) {
             result *= number;
         }
