@@ -21,4 +21,12 @@ public class Pair<K, V> {
     public V getV() {
         return v;
     }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "k=" + k +
+                ", v=" + v +
+                '}';
+    }
 }
