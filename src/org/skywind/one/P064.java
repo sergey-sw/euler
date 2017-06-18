@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import static org.skywind.util.Numbers.isSqrt;
+
 /**
  * How many continued fractions for N ≤ 10000 have an odd period?
  * <p>
@@ -23,10 +25,6 @@ public class P064 {
         );
     }
 
-    private static boolean isSqrt(int n) {
-        double sqrt = Math.sqrt(n);
-        return sqrt == (int) sqrt;
-    }
 
     // https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
     private static int getPeriod(int n) {

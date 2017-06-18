@@ -11,6 +11,11 @@ import java.util.stream.LongStream;
  */
 public class Numbers {
 
+    public static boolean isSqrt(int n) {
+        double sqrt = Math.sqrt(n);
+        return sqrt == (int) sqrt;
+    }
+
     public static long[] triangles(int size) {
         return generateArr(size, Numbers::getTriangle);
     }
