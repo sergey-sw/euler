@@ -47,4 +47,14 @@ public class Permutations {
         }
         return lists;
     }
+
+    public static boolean isPermutation(int a, int b) {
+        List<Integer> aDigits = Digits.getDigits(a);
+        aDigits.sort(Integer::compareTo);
+
+        List<Integer> bDigits = Digits.getDigits(b);
+        bDigits.sort(Integer::compareTo);
+
+        return aDigits.equals(bDigits);
+    }
 }
