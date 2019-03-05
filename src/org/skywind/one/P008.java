@@ -1,5 +1,7 @@
 package org.skywind.one;
 
+import org.skywind.util.TimedCall;
+
 /**
  * The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
  *
@@ -35,7 +37,7 @@ public class P008 {
 
     public static void main(String[] args) {
         System.out.println(findMaxProduct(4));
-        System.out.println(findMaxProduct(13));
+        System.out.println(TimedCall.call(() -> findMaxProduct(13)));
     }
 
     private static long findMaxProduct(int window) {

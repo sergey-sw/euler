@@ -59,6 +59,9 @@ public class Factorization {
     }
 
     private static OptionalInt findFactor(long n, Primes primes) {
-        return primes.toStream().filter(prime -> n % prime == 0).findFirst();
+        return primes.toStream()
+                .filter(prime -> prime <= n)
+                .filter(prime -> n % prime == 0)
+                .findFirst();
     }
 }

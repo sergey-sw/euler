@@ -18,19 +18,19 @@ public class Primes {
 
     // unset bits are prime numbers
     private final BitSet bitSet;
-    private final int n;
+    private final int max;
 
     public Primes() {
         this(1_000_000);
     }
 
     public Primes(int size) {
-        n = Math.max(size, 1_000_000);
+        max = Math.max(size, 1_000_000);
         bitSet = new BitSet(size);
 
-        for (int i = 2; i <= n / 2; i++) {
+        for (int i = 2; i <= max / 2; i++) {
             if (!bitSet.get(i)) {
-                for (int j = 2 * i; j <= n; j += i) {
+                for (int j = 2 * i; j <= max; j += i) {
                     bitSet.set(j);
                 }
             }
@@ -39,29 +39,29 @@ public class Primes {
 
     private Primes(BitSet bs, int size) {
         bitSet = bs;
-        n = size;
+        max = size;
     }
 
     public boolean isPrime(int n) {
-        if (this.n <= n) throw new IllegalArgumentException("n is too big: " + n);
+        if (this.max <= n) throw new IllegalArgumentException("n is too big: " + n);
         return n > 1 && !bitSet.get(n);
     }
 
     public boolean isComposite(int n) {
-        if (this.n <= n) throw new IllegalArgumentException("n is too big: " + n);
+        if (this.max <= n) throw new IllegalArgumentException("n is too big: " + n);
         return n > 1 && bitSet.get(n);
     }
 
     public IntStream toStream() {
-        return IntStream.range(2, n).filter(this::isPrime);
+        return IntStream.range(2, max).filter(this::isPrime);
     }
 
     public IntStream reverseStream() {
-        return IntStream.iterate(n, x -> x - 1).limit(n - 1).filter(this::isPrime);
+        return IntStream.iterate(max, x -> x - 1).limit(max - 1).filter(this::isPrime);
     }
 
     public IntStream toCompositeStream() {
-        return IntStream.range(2, n).filter(this::isComposite);
+        return IntStream.range(2, max).filter(this::isComposite);
     }
 
     public static Primes getBillionPrimes() {

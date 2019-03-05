@@ -1,5 +1,7 @@
 package org.skywind.one;
 
+import org.skywind.util.TimedCall;
+
 /**
  * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
  * a^2 + b^2 = c^2
@@ -15,15 +17,14 @@ package org.skywind.one;
 public class P009 {
 
     public static void main(String[] args) {
-        System.out.println("a*b*c=" + usingBruteForce());
+        System.out.println("a*b*c=" + TimedCall.call(P009::usingBruteForce));
     }
 
     private static long usingBruteForce() {
         for (int a = 1; a < 500; a++) {
-            for (int b = 1; b < 500 && a + b < 1000; b++) {
+            for (int b = 1; b < 500; b++) {
                 for (int c = 1; c < 500 && a + b + c <= 1000; c++) {
                     if (a + b + c == 1000 && a * a + b * b == c * c) {
-                        System.out.println(a + " " + b + " " + c);
                         return a * b * c;
                     }
                 }
